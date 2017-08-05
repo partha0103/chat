@@ -5,8 +5,7 @@ let handle = document.getElementById('handle');
 let btn = document.getElementById('send');
 let output = document.getElementById('output');
 let feedback = document.getElementById('feedback');
-let keypressed = [];
-let status = false;
+let last_time ;
 
 //Emit events
 
@@ -28,7 +27,14 @@ socket.on('chat', (data) => {
     output.innerHTML += '<p><strong>'+data.handle+':<strong> '+data.message+'</p>'
 })
 
+setInterval((callback) => {
+    currentTime = new Date().getSeconds()
+    if (last_time && currentTime - last_time > 1) {
+        feedback.innerHTML = '';
+    }
+}, 1000);
 
 socket.on('typing', (data) => {
-    feedback.innerHTML = '<p><em>'+ data.value +' is typing a message ....</p>';
+        last_time = new Date().getSeconds();
+        feedback.innerHTML = '<p>Typing</p>';
 })
