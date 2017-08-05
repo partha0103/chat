@@ -2,8 +2,20 @@
 <html>
 <head>
     <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 </head>
 <body>
-    <h1>Hello</h1>
+    <div id="partha-chat">
+        <div id="chat-window">
+            <div id="output"></div>
+            <div id="feedback"></div>
+        </div>
+        <input type="text" id="handle" placeholder="Handle">
+        <input  id="message" type="text" placeholder="Message">
+        <button id="send">Send</button>
+    </div>
+    <script src="./chat.js"></script>
 </body>
 </html>
